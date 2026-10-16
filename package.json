@@ -1,0 +1,28 @@
+{
+  "name": "anon-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Project-scoped MCP tools for ANON",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "bin": { "anon-mcp": "dist/index.js" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node --env-file-if-exists=.env dist/index.js",
+    "watch": "tsc -p tsconfig.json --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "sync:api": "npm run build && node scripts/sync-api.mjs",
+    "check:api": "npm run build && node scripts/sync-api.mjs --check"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "yaml": "^2.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.3"
+  }
+}
